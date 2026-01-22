@@ -51,22 +51,4 @@ def dashboard():
     </script>
     """
 
-"""
-@app.get("/", response_class=HTMLResponse)
-def dashboard():
-    if latest_temp is None:
-        return "<h2>No data yet</h2>"
 
-    message = "Temperature is normal"
-
-    if latest_temp < LOW_THRESHOLD:
-        message = "⚠️ Temperature too LOW!"
-    elif latest_temp > HIGH_THRESHOLD:
-        message = "🔥 Temperature too HIGH!"
-
-    return f"""
-    <h1>Temperature Dashboard</h1>
-    <h2>Current Temperature: {latest_temp} °C</h2>
-    <h3>{message}</h3>
-    """
-"""
