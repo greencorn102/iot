@@ -18,6 +18,11 @@ def receive_temperature(data: TempData):
     latest_temp = data.temperature
     return {"status": "received"}
 
+@app.get("/latest")
+def get_latest():
+    return {"temperature": latest_temp}
+
+
 @app.get("/", response_class=HTMLResponse)
 def dashboard():
     return """
@@ -50,5 +55,6 @@ def dashboard():
     fetchTemp();
     </script>
     """
+
 
 
