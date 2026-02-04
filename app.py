@@ -42,7 +42,7 @@ def dashboard():
 
 
         if (data.motion == 1) msg = "MOTION DETECTED !!";
-        else if msg = "* * *";
+        else msg = "* * *";
 
         document.getElementById("msg").innerText = msg;
     }
@@ -51,6 +51,7 @@ def dashboard():
     fetchMotion();
     </script>
     """
+
 
 
 
