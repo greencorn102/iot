@@ -35,7 +35,7 @@ def dashboard():
         const data = await res.json();
 
         if (data.motion === null) {
-            document.getElementById("temp").innerText = "No motion yet";
+            document.getElementById("temp").innerText = "* *";
             return;
         }
 
@@ -51,6 +51,7 @@ def dashboard():
     fetchTemp();
     </script>
     """
+
 
 
 
