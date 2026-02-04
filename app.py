@@ -4,23 +4,22 @@ from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
-LOW_THRESHOLD = 10
-HIGH_THRESHOLD = 35
 
-latest_temp = None
+
+latest_motion = None
 
 class TempData(BaseModel):
-    temperature: float
+    motion: int
 
-@app.post("/temperature")
-def receive_temperature(data: TempData):
-    global latest_temp
-    latest_temp = data.temperature
+@app.post("/motion")
+def receive_motion(data: MotionData):
+    global latest_motion
+    latest_motion = data.motion
     return {"status": "received"}
 
 @app.get("/latest")
 def get_latest():
-    return {"temperature": latest_temp}
+    return {"motion": latest_motion}
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -35,18 +34,15 @@ def dashboard():
         const res = await fetch('/latest');
         const data = await res.json();
 
-        if (data.temperature === null) {
-            document.getElementById("temp").innerText = "No data yet";
+        if (data.motion === null) {
+            document.getElementById("temp").innerText = "No motion yet";
             return;
         }
 
-        document.getElementById("temp").innerText =
-            "Current Temperature: " + data.temperature + " °C";
 
-        let msg = "Temperature normal";
 
-        if (data.temperature < 10) msg = "⚠️ Temperature too LOW!";
-        else if (data.temperature > 35) msg = "🔥 Temperature too HIGH!";
+        if (data.motion == 1) msg = "MOTION DETECTED !!";
+        else if msg = "* * *";
 
         document.getElementById("msg").innerText = msg;
     }
@@ -55,6 +51,7 @@ def dashboard():
     fetchTemp();
     </script>
     """
+
 
 
 
