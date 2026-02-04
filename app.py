@@ -8,7 +8,7 @@ app = FastAPI()
 
 latest_motion = None
 
-class TempData(BaseModel):
+class MotionData(BaseModel):
     motion: int
 
 @app.post("/motion")
@@ -25,8 +25,8 @@ def get_latest():
 @app.get("/", response_class=HTMLResponse)
 def dashboard():
     return """
-    <h1>Temperature Dashboard</h1>
-    <h2 id="temp">Loading...</h2>
+    <h1>Motion Dashboard</h1>
+    <h2 id="motion">Sensing...</h2>
     <h3 id="msg"></h3>
 
     <script>
@@ -51,6 +51,7 @@ def dashboard():
     fetchTemp();
     </script>
     """
+
 
 
 
