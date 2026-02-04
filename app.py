@@ -30,12 +30,12 @@ def dashboard():
     <h3 id="msg"></h3>
 
     <script>
-    async function fetchTemp() {
+    async function fetchMotion() {
         const res = await fetch('/latest');
         const data = await res.json();
 
         if (data.motion === null) {
-            document.getElementById("temp").innerText = "* *";
+            document.getElementById("motion").innerText = "* *";
             return;
         }
 
@@ -47,10 +47,11 @@ def dashboard():
         document.getElementById("msg").innerText = msg;
     }
 
-    setInterval(fetchTemp, 3000); // every 3 seconds
-    fetchTemp();
+    setInterval(fetchMotion, 3000); // every 3 seconds
+    fetchMotion();
     </script>
     """
+
 
 
 
